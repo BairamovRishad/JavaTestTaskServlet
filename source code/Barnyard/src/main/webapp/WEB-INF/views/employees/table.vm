@@ -1,0 +1,23 @@
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>#springMessage('employees.table.title')</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+        #foreach( $employee in $employeeList )
+        <tr>
+            <td>
+                <a href="#springUrl("/employees/details/$employee.id")" class="details-btn">$employee.lastName $employee.firstName</a>
+            </td>
+            <td>
+                #if($security.allGranted("ROLE_EDITOR"))
+                    <a href="#springUrl("/employees/edit/$employee.id")" class="edit-btn btn btn-info btn-sm pull-right">#springMessage('button.edit')</a>
+                #end
+            </td>
+        </tr>
+        #end
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$!page_title</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+
+    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href="#springUrl("/resources/css/site.css")"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                #if($security.allGranted("ROLE_READER"))
+                    <li><a href="#springUrl("/employees")">#springMessage("employees.title")</a></li>
+
+                    #if($security.allGranted("ROLE_EDITOR"))
+                        <li><a href="#springUrl("/departments")">#springMessage("departments.title")</a></li>
+                    #end
+                #end
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        #springMessage("language.title") <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="?language=en">English</a></li>
+                        <li><a href="?language=ru">Русский</a></li>
+                    </ul>
+                </li>
+            </ul>
+            #if($security.allGranted("ROLE_READER"))
+                <section class="navbar-text navbar-right">
+                    #springMessage("title.greeting"), <span class="username">$security.getPrincipal()</span>
+
+                    <form action="#springUrl("/j_spring_security_logout")" method="post" id="logoutForm" class="navbar-form">
+                        <input type="hidden" name="$_csrf.parameterName" value="$_csrf.token"/>
+                        <a href="javascript:void(0)" onclick=" document.getElementById('logoutForm').submit(); ">#springMessage("logout.title")</a>
+                    </form>
+                </section>
+            #end
+        </div>
+    </div>
+</nav>
+
+
+<div id="body">
+    <section class="content-wrapper main-content clear-fix">
+        $screen_content
+    </section>
+</div>
+
+<div id="PopupWrapper"></div>
+
+<script type="text/javascript" src="#springUrl("/resources/js/modernizr-2.7.2.js")"></script>
+<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="#springUrl("/resources/js/jquery.unobtrusive-ajax.min.js")"></script>
+<script type="text/javascript" src="#springUrl("/resources/js/jquery.validate.min.js")"></script>
+<script type="text/javascript" src="#springUrl("/resources/js/jquery.validate.unobtrusive.min.js")"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="#springUrl("/resources/js/common.js")"></script>
+<script type="text/javascript" src="#springUrl("/resources/js/employees.js")"></script>
+<script type="text/javascript" src="#springUrl("/resources/js/departments.js")"></script>
+
+</body>
+</html>

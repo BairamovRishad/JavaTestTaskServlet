@@ -1,0 +1,10 @@
+#set( $layout = "/layout/main.vm" )
+#set( $page_title = "#springMessage('departments.title')" )
+
+<a href="#springUrl("/employees")" class="btn btn-default">#springMessage('button.back')</a>
+<a href="#springUrl("/departments/create")" data-source="#springUrl("/departments")" class="create-btn btn btn-primary">#springMessage('button.create')</a>
+<br/>
+
+<div class="departments-table">
+    #parse("departments/table.vm")
+</div>

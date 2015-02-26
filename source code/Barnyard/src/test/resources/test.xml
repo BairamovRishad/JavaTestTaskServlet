@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="employeeService" name="employeeService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.barnyard.staff.service.EmployeeService"/>
+    </bean>
+
+    <bean id="employeeExtraValidator" name="employeeExtraValidator" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.barnyard.staff.helpers.EmployeeExtraValidator"/>
+    </bean>
+
+    <bean id="departmentService" name="departmentService" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.barnyard.staff.service.DepartmentService"/>
+    </bean>
+
+    <bean id="departmentExtraValidator" name="departmentExtraValidator" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="com.barnyard.staff.helpers.DepartmentExtraValidator"/>
+    </bean>
+</beans>

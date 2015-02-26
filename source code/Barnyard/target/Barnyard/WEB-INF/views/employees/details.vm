@@ -1,0 +1,36 @@
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">#springMessage("details.title")</h4>
+            </div>
+
+            <div class="modal-body">
+                <dl class="dl-horizontal">
+                    <dt> #springMessage("title.firstName") </dt>
+                    <dd> $employee.firstName </dd>
+
+                    <dt> #springMessage("title.lastName") </dt>
+                    <dd> $employee.lastName </dd>
+
+                    <dt> #springMessage("title.salary") </dt>
+                    <dd> $numberTool.format("#0.00", $employee.salary) <dd>
+
+                    <dt> #springMessage("title.birthdate") </dt>
+                    <dd> $dateTool.format("dd.MM.yyyy", $employee.birthdate) </dd>
+                </dl>
+            </div>
+
+            <div class="modal-footer">
+                <ul class="pager">
+                    <li class="previous" data-dismiss="modal"><a href="#" class="pull-left">#springMessage('button.back')</a></li>
+                    #if($security.allGranted("ROLE_EDITOR"))
+                        <li><a href="#springUrl("/employees/edit/$employee.id")" class="edit-btn pull-right">#springMessage('button.edit')</a></li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

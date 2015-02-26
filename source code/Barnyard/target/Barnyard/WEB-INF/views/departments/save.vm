@@ -1,0 +1,30 @@
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">
+                    #if($department.id == "0")
+                        #springMessage("create.title")
+                    #else
+                        #springMessage("edit.title")
+                    #end
+                </h4>
+            </div>
+
+            <form action="#springUrl("/departments/save")" class="form-horizontal" id="saveDepartmentForm">
+                <div class="modal-body">
+                    #tablerow("department" "name" $department.name true)
+                    #springFormHiddenInput("department.id" "")
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">#springMessage("button.cancel")</button>
+                    <button class="save-button btn btn-success">#springMessage("button.save")</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

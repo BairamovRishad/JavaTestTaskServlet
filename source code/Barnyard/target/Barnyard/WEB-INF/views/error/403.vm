@@ -1,0 +1,12 @@
+<div class="error">
+    <h1>#springMessage("403.title")</h1>
+
+    <h2>
+        #if($username)
+            #springMessage("title.username") $username <br/>
+        #end
+        #springMessage("403.message")
+    </h2>
+    <a href="#springUrl("/")" class="pull-left">#springMessage('button.back')</a>
+</div>
+

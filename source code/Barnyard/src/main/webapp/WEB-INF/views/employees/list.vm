@@ -1,0 +1,31 @@
+#set( $layout = "/layout/main.vm" )
+#set( $page_title = "#springMessage('employees.title')" )
+
+<!-- The search input-->
+<div class="input-group">
+    <input type="search" data-url="#springUrl("/employees/search")" class="search-input form-control" placeholder="#springMessage('searchPlaceholder')">
+    <span class="input-group-btn">
+        <button class="search-btn btn btn-success" type="button">#springMessage('button.search')</button>
+        <button class="reset-btn btn btn-danger" type="button">#springMessage('button.reset')</button>
+    </span>
+</div>
+<br/>
+
+#if($security.allGranted("ROLE_EDITOR"))
+    <a href="#springUrl("/employees/create")" class="create-btn btn btn-primary">#springMessage('button.create')</a>
+    <br/>
+#end
+
+<!-- If no search results -->
+<div class="noresults">
+    <br/>
+
+    <div class="alert alert-info">
+        <h4>#springMessage('noresults.message')</h4>
+    </div>
+</div>
+
+<div class="employees-table">
+    #parse("employees/table.vm")
+</div>
+

@@ -1,0 +1,11 @@
+#macro(tablerow $object $label $value $active)
+    #springBind("$object.$label")
+    <div class="form-group">
+        <label for="$label" class="col-md-4 control-label">#springMessage("title.$label")</label>
+
+        <div class="col-md-8">
+            <input type='text' name='$label' class="form-control" value="$!value" required #if(!$active)disabled#end>
+            #springShowErrors("<br />" "field-validation-error")
+        </div>
+    </div>
+#end
