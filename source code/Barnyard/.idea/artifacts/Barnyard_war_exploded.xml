@@ -7,6 +7,7 @@
           <element id="module-output" name="Barnyard" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-servlet_3.0_spec:1.0" />
           <element id="library" level="project" name="Maven: org.apache.velocity:velocity:1.7" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
           <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.4" />
@@ -71,11 +72,12 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.2" />
           <element id="library" level="project" name="Maven: javax.el:javax.el-api:2.2.4" />
           <element id="library" level="project" name="Maven: org.glassfish.web:javax.el:2.2.4" />
+          <element id="library" level="project" name="Maven: com.atlassian.clover:clover:4.0.3" />
           <element id="library" level="application" name="Clover IDEA Plugin" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="D:\Java\IntelliJIDEA\Barnyard\target/MANIFEST.MF" />
+        <element id="file-copy" path="D:\JavaTestTaskServlet\source code\Barnyard\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="Barnyard/web/Web" />
     </root>

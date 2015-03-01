@@ -14,9 +14,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Web -->
-        <servlet.version>2.5</servlet.version>
+        <servlet.version>3.0-alpha-1</servlet.version>
         <jsp.version>2.2</jsp.version>
-        <jstl.version>1.2</jstl.version>
+        <geronimo.version>1.0</geronimo.version>
         <velocity.version>1.7</velocity.version>
         <tiles.version>3.0.5</tiles.version>
 
@@ -39,6 +39,7 @@
         <aspectj.version>1.8.3</aspectj.version>
         <jackson.version>2.4.2</jackson.version>
         <el.version>2.2.4</el.version>
+        <clover.version>4.0.3</clover.version>
     </properties>
 
     <dependencies>
@@ -48,6 +49,19 @@
             <artifactId>servlet-api</artifactId>
             <version>${servlet.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-servlet_3.0_spec</artifactId>
+            <version>${geronimo.version}</version>
         </dependency>
 
         <!-- Velocity -->
@@ -299,6 +313,12 @@
             <version>${el.version}</version>
         </dependency>
 
+        <!-- Clover -->
+        <dependency>
+            <groupId>com.atlassian.clover</groupId>
+            <artifactId>clover</artifactId>
+            <version>${clover.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -313,8 +333,20 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>2.18.1</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
+                    <systemPropertyVariables>
+                        <surefire.security.manager>java.lang.SecurityManager</surefire.security.manager>
+                    </systemPropertyVariables>
                     <includes>
                         <include>**/*Tests.java</include>
                     </includes>
